@@ -1,7 +1,11 @@
 
 import { useState, useEffect } from "react";
-
+import ContactForm from "../components/ContactForm/ContactForm"
+import SearchBox from "../components/SearchBox/SearchBox";
 import ContactList from "../components/ContactList/ContactList";
+
+
+
 
 const App = () => {
   const [contacts, setContacts] = useState(() => {
@@ -21,7 +25,18 @@ const App = () => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
 
-
+  const addContact = (newContact) => {
+    if (
+      contacts.some(
+        (contact) =>
+          contact.name.toLowerCase() === newContact.name.toLowerCase()
+      )
+    ) {
+      alert(`${newContact.name} is already in the phonebook.`);
+      return;
+    }
+    setContacts((prevContacts) => [...prevContacts, newContact]);
+  };
 
   const deleteContact = (id) => {
     setContacts((prevContacts) =>
@@ -29,7 +44,9 @@ const App = () => {
     );
   };
 
-
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  };
 
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -38,7 +55,8 @@ const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
-
+      <ContactForm addContact={addContact} />
+      <SearchBox filter={filter} onFilterChange={handleFilterChange} />
       <ContactList contacts={filteredContacts} deleteContact={deleteContact} />
     </div>
   );
