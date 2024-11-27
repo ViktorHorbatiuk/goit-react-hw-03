@@ -1,0 +1,41 @@
+.errorMessage {
+  color: rgb(179, 2, 2);
+}
+
+.container {
+  display: flex;
+  padding: 20px 10px;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  min-height: 100%;
+  margin-top: 15px;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.label {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.submitBtn {
+  border: 0.5px solid black;
+  background-color: rgb(232, 232, 232);
+  padding: 3%;
+  border-radius: 5px;
+  align-self: center;
+}
+
+.submitBtn:hover {
+border-color: green;
+}

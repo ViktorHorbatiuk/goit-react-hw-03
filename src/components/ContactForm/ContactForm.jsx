@@ -2,6 +2,9 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
+import css from "../ContactForm/ContactForm.module.css"
+
+
 const ContactForm = ({ addContact }) => {
   const validationSchema = Yup.object({
     name: Yup.string()
@@ -24,18 +27,28 @@ const ContactForm = ({ addContact }) => {
       }}
     >
       {() => (
-        <Form>
-          <label>
+        <Form className={css.container}>
+          <label className={css.label}>
             Name:
-            <Field type="text" name="name" />
+            <Field className={css.input} type="text" name="name" />
           </label>
-          <ErrorMessage name="name" component="div" />
-          <label>
+          <ErrorMessage
+            className={css.errorMessage}
+            name="name"
+            component="div"
+          />
+          <label className={css.label}>
             Number:
-            <Field type="text" name="number" />
+            <Field className={css.input} type="text" name="number" />
           </label>
-          <ErrorMessage name="number" component="div" />
-          <button type="submit">Add Contact</button>
+          <ErrorMessage
+            className={css.errorMessage}
+            name="number"
+            component="div"
+          />
+          <button className={css.submitBtn} type="submit">
+            Add Contact
+          </button>
         </Form>
       )}
     </Formik>

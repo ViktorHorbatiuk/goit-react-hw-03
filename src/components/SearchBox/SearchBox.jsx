@@ -1,8 +1,15 @@
+import css from "../SearchBox/SearchBox.module.css"
+
 const SearchBox = ({ filter, onFilterChange }) => (
-  <div>
+  <div className={css.label}>
     <label>
-      Find contacts by name
-      <input type="text" value={filter} onChange={onFilterChange} />
+      <span>Find contacts by name</span>
+      <input
+        className={css.input}
+        type="text"
+        value={filter}
+        onChange={onFilterChange}
+      />
     </label>
   </div>
 );

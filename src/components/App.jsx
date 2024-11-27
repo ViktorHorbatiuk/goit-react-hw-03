@@ -7,6 +7,7 @@ import ContactList from "../components/ContactList/ContactList";
 
 
 
+
 const App = () => {
   const [contacts, setContacts] = useState(() => {
     const savedContacts = localStorage.getItem("contacts");
